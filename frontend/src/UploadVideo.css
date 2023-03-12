@@ -1,0 +1,11 @@
+#textfield::placeholder{
+    color:"#ffffff"
+}
+
+.Mui-required,.Mui-active{
+    border-color: #818181 !important;
+}
+
+#genre::placeholder{
+    color:white;
+}

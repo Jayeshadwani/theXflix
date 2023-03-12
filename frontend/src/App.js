@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react"
+import Header from './Header';
+import theme from "./Theme"
+import VideoDetails from './VideoDetails';
+import {ThemeProvider} from "@mui/material/styles"
+import Genre from './Genre';
+import VideosGrid from './VideosGrid';
+import LandingPage from './LandingPage';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import {SnackbarProvider} from "notistack"
+import { AppState } from './AppContext';
+import UploadVideo from './UploadVideo';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AppState>
+        <ThemeProvider theme={theme}>
+          <SnackbarProvider>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/videos/:videoId" element={<VideoDetails  />} />
+            </Routes>
+          </SnackbarProvider>
+        </ThemeProvider>
+     </AppState>
+    </BrowserRouter>          
   );
 }
 
